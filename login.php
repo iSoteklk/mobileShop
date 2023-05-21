@@ -1,3 +1,8 @@
+<?php
+//php connection
+include('connection.php');
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -17,13 +22,13 @@
     <!-- Style -->
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>Login #8</title>
+    <title>Login</title>
 </head>
 
 <body>
 
 
-
+    </br></br></br>
     <div class="content">
         <div class="container">
             <div class="row">
@@ -34,47 +39,51 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="mb-4">
-                                <h3>Sign In to <strong></strong></h3>
-                                <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur
-                                    adipisicing.</p>
+                                <h3>Sign In <strong></strong></h3>
+                                <p class="mb-4">Use the sign in form to log in to our website.</p>
                             </div>
-                            <form action="#" method="post">
+                            <form  method="post">
                                 <div class="form-group first">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <label for="username">E-mail</label>
+                                    <input type="text" class="form-control" name="email" id="username" required>
 
                                 </div>
                                 <div class="form-group last mb-4">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" class="form-control" name="password" id="password" required>
 
                                 </div>
 
                                 <div class="d-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-0"><span class="caption">Remember
-                                            me</span>
-                                        <input type="checkbox" checked="checked" />
-                                        <div class="control__indicator"></div>
-                                    </label>
+                                    
                                     <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                                 </div>
 
-                                <input type="submit" value="Log In" class="btn text-white btn-block btn-primary">
+                                <input type="submit" value="Log In" name="login" class="btn text-white btn-block btn-primary">
 
-                                <span class="d-block text-left my-4 text-muted"> or sign in with</span>
-
-                                <div class="social-login">
-                                    <a href="#" class="facebook">
-                                        <span class="icon-facebook mr-3"></span>
-                                    </a>
-                                    <a href="#" class="twitter">
-                                        <span class="icon-twitter mr-3"></span>
-                                    </a>
-                                    <a href="#" class="google">
-                                        <span class="icon-google mr-3"></span>
-                                    </a>
-                                </div>
                             </form>
+
+                            <?php
+                                if(isset($_POST['login']))
+                                {
+                                    $email=$_POST['email'];
+                                    $password=$_POST['password'];
+                                    $query="select * from customer where email='$email' and password='$password'";
+                                    $query_run=mysqli_query($conn,$query);
+                                    if(mysqli_num_rows($query_run)>0)
+                                    {
+                                        // $_SESSION['email']=$email;
+                                        header('location:index.php');
+                                    }
+                                    else
+                                    {
+                                        echo '<script type="text/javascript">alert("Invalid Credentials")</script>';
+                                    }
+                                }
+                                else
+                                {
+                                }
+                            ?>
                         </div>
                     </div>
 
