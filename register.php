@@ -44,65 +44,65 @@ include('connection.php');
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">First Name</label>
-                                            <input type="text" class="form-control" name="fname" id="fname">
+                                            <input type="text" class="form-control" name="fname" id="fname" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="lname">Last Name</label>
-                                            <input type="text" class="form-control" name="lname" id="lname">
+                                            <input type="text" class="form-control" name="lname" id="lname" required>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
-                                    <input type="email" class="form-control" name="email" id="email">
+                                    <input type="email" class="form-control" name="email" id="email" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="number" class="form-control" name="phone" id="phone">
+                                    <input type="number" class="form-control" name="phone" id="phone" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="nic">NIC/Passport</label>
-                                    <input type="text" class="form-control" name="nic" id="nic">
+                                    <input type="text" class="form-control" name="nic" id="nic" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="add1">Address Line 1</label>
-                                    <input type="text" class="form-control" name="add1" id="add1">
+                                    <input type="text" class="form-control" name="add1" id="add1" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="add2">Address Line 2</label>
-                                    <input type="text" class="form-control" name="add2" id="add2">
+                                    <input type="text" class="form-control" name="add2" id="add2" required>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="city">City</label>
-                                            <input type="text" class="form-control" name="city" id="city">
+                                            <input type="text" class="form-control" name="city" id="city" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="postal">Postal Code</label>
-                                            <input type="number" class="form-control" name="postal" id="postal">
+                                            <input type="number" class="form-control" name="postal" id="postal" required>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password">
+                                    <input type="password" name="password" class="form-control" id="password" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password1">Re-type Password</label>
-                                    <input type="password" name="password1" class="form-control" id="password1">
+                                    <input type="password" name="password1" class="form-control" id="password1" required>
                                 </div>
 
                                 <input type="submit" value="Register" name="register" class="btn text-white btn-block btn-primary">
