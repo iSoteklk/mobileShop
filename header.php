@@ -97,7 +97,7 @@
             </div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Customer Service</p>
-                <h5 class="m-0">+012 345 6789</h5>
+                <h5 class="m-0">+94 112 234 567</h5>
             </div>
         </div>
     </div>
@@ -114,23 +114,23 @@
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
-                        <div class="nav-item dropdown dropright">
+                        <!-- <div class="nav-item dropdown dropright">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i class="fa fa-angle-right float-right mt-1"></i></a>
                             <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
                                 <a href="" class="dropdown-item">Men's Dresses</a>
                                 <a href="" class="dropdown-item">Women's Dresses</a>
                                 <a href="" class="dropdown-item">Baby's Dresses</a>
                             </div>
-                        </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
+                        </div> -->
+                        <a href="" class="nav-item nav-link">Laptop</a>
+                        <a href="" class="nav-item nav-link">Personal Computers</a>
+                        <a href="" class="nav-item nav-link">Ram</a>
+                        <a href="" class="nav-item nav-link">Graphics Cards</a>
+                        <a href="" class="nav-item nav-link">Processors</a>
+                        <a href="" class="nav-item nav-link">Power Supply</a>
+                        <a href="" class="nav-item nav-link">Mouse</a>
+                        <a href="" class="nav-item nav-link">Keyboard</a>
+                        <a href="" class="nav-item nav-link">Flash Drives</a>
                     </div>
                 </nav>
             </div>
@@ -145,17 +145,17 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
-                            <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
+                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="shop.php" class="nav-item nav-link">Shop</a>
+                            <a href="detail.php" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+                                    <a href="cart.php" class="dropdown-item">Shopping Cart</a>
+                                    <a href="checkout.php" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="contact.php" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
