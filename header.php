@@ -1,6 +1,27 @@
 <?php
+session_start();
+$id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+$email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
+$fname = isset($_SESSION['fname']) ? $_SESSION['fname'] : '';
+$lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : '';
+
+
 include 'connection.php';
+
+
+// get id from customer table where email = session email
+$query = "SELECT id FROM customer WHERE email = '$email'";
+$result = mysqli_query($conn, $query);
+$user_id = 0;
+
+if($result){
+    $row = mysqli_fetch_assoc($result);
+    $user_id = $row['id'];
+}else{
+    echo "Error";
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,8 +68,18 @@ include 'connection.php';
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <!-- check if shession id !='' -->
+                            <?php if($email != ''){ ?>
+                            <!-- <a href="profile.php"><button class="dropdown-item" type="button">Profile</button></a> -->
+                            <a href="cart.php"><button class="dropdown-item" type="button">My Cart</button></a>
+                            <a href="logout.php"><button class="dropdown-item" type="button">Logout</button></a>
+                            <?php }else{ ?>
+
+
                             <a href="login.php"><button class="dropdown-item" type="button" >Sign in</button></a>
                             <a href="register.php"><button class="dropdown-item" type="button">Sign up</button></a>
+                            <?php } ?>
+
                         </div>
                     </div>
                     <!-- <div class="btn-group mx-2">
@@ -117,15 +148,16 @@ include 'connection.php';
                                 <a href="" class="dropdown-item">Baby's Dresses</a>
                             </div>
                         </div> -->
-                        <a href="#1" class="nav-item nav-link">Laptops</a>
-                        <a href="#2" class="nav-item nav-link">Processors</a>
-                        <a href="#3" class="nav-item nav-link">Motherboards</a>
-                        <a href="#4" class="nav-item nav-link">RAM</a>
-                        <a href="#5" class="nav-item nav-link">Graphic Cards</a>
-                        <a href="#6" class="nav-item nav-link">Power Supply</a>
-                        <a href="#7" class="nav-item nav-link">Monitors</a>
-                        <a href="#8" class="nav-item nav-link">Keybords and Mouse</a>
-                        <a href="#9" class="nav-item nav-link">Flash Drives</a>
+                        <a href="shop.php" class="nav-item nav-link">All</a>
+                        <a href="shop.php?category=1" class="nav-item nav-link">Laptops</a>
+                        <a href="shop.php?category=2" class="nav-item nav-link">Processors</a>
+                        <a href="shop.php?category=3" class="nav-item nav-link">Motherboards</a>
+                        <a href="shop.php?category=4" class="nav-item nav-link">RAM</a>
+                        <a href="shop.php?category=5" class="nav-item nav-link">Graphic Cards</a>
+                        <a href="shop.php?category=6" class="nav-item nav-link">Power Supply</a>
+                        <a href="shop.php?category=7" class="nav-item nav-link">Monitors</a>
+                        <a href="shop.php?category=8" class="nav-item nav-link">Keybords and Mouse</a>
+                        <a href="shop.php?category=9" class="nav-item nav-link">Flash Drives</a>
                         
                          
                     </div>
@@ -161,7 +193,7 @@ include 'connection.php';
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
                                 <?php
                                     //select count from cart whre user = id 
-                                    $sql = "SELECT COUNT(*) AS count FROM cart WHERE user = 1";
+                                    $sql = "SELECT COUNT(*) AS count FROM cart WHERE user = $user_id";
                                     $result = mysqli_query($conn, $sql);
                                     $row = mysqli_fetch_assoc($result);
                                     echo $row['count'];

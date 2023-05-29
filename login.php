@@ -1,5 +1,7 @@
 <?php
-//php connection
+//session start
+session_start();
+
 include('connection.php');
 ?>
 
@@ -72,7 +74,11 @@ include('connection.php');
                                     $query_run=mysqli_query($conn,$query);
                                     if(mysqli_num_rows($query_run)>0)
                                     {
-                                        // $_SESSION['email']=$email;
+                                        $_SESSION['email']=$email;
+                                        $_SESSION['id']=$row['id'];
+                                        $_SESSION['fname']=$row['fname'];
+                                        $_SESSION['lanme']=$row['lanme'];
+
                                         header('location:index.php');
                                     }
                                     else

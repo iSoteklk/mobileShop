@@ -287,7 +287,7 @@ include 'header.php';
                         </div>
                     </div>
                     <div class="text-center py-4">
-                    <a class="h6 text-decoration-none text-truncate" href="#details page"><?php echo $row['name']; ?></a>
+                    <a class="h6 text-decoration-none text-truncate" href="./detail.php?id=<?php echo $row['id'] ?>"><?php echo $row['name']; ?></a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                         <h5><?php echo $row['price'].' LKR'; ?></h5><h6 class="text-muted ml-2"><del><?php echo $row['price']+5000; echo' LKR'; ?></del></h6>
                         </div>
