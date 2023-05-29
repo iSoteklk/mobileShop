@@ -8,19 +8,24 @@ $lname = isset($_SESSION['lname']) ? $_SESSION['lname'] : '';
 
 include 'connection.php';
 
-
-// get id from customer table where email = session email
-$query = "SELECT id FROM customer WHERE email = '$email'";
-$result = mysqli_query($conn, $query);
 $user_id = 0;
 
-if($result){
-    $row = mysqli_fetch_assoc($result);
-    $user_id = $row['id'];
-}else{
-    echo "Error";
+// get id from customer table where email = session email
+if($email != ''){
+    $query = "SELECT * FROM customer WHERE email = '$email'";
+    $result = mysqli_query($conn, $query);
+    
+    
+    if($result){
+        $row = mysqli_fetch_assoc($result);
+        $user_id = $row['id'];
+    }else{
+        echo "Error";
+    }
 }
-?>
+    ?>
+   
+
 
 
 <!DOCTYPE html>

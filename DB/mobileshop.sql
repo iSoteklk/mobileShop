@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 08:49 AM
+-- Generation Time: May 29, 2023 at 11:17 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -42,23 +42,24 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Laptops'),
-(2, 'Processors'),
-(3, 'Motherboards'),
-(4, 'RAM'),
-(5, 'Graphic Cards'),
-(6, 'Power Supply'),
-(7, 'Monitors'),
-(8, 'Keybords and Mouse'),
-(9, 'Flash Drives');
+INSERT INTO `category` (`id`, `name`, `image`) VALUES
+(1, 'Laptops', '1.jpg'),
+(2, 'Processors', '2.jpg'),
+(3, 'Motherboards', '3.jpg'),
+(4, 'RAM', '4.jpg'),
+(5, 'Graphic Cards', '5.jpg'),
+(6, 'Power Supply', '6.jpg'),
+(7, 'Monitors', '7.jpg'),
+(8, 'Keybords and Mouse', '8.jpg'),
+(9, 'Flash Drives', '9.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,7 +155,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `category`
