@@ -58,8 +58,10 @@ include('connection.php');
 
                                 <div class="d-flex mb-5 align-items-center">
                                     
-                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                                    <span class="ml-auto"><a href="register.php" class="forgot-pass">Need an Account? Register</a></span>
+                                    
                                 </div>
+                                
 
                                 <input type="submit" value="Log In" name="login" class="btn text-white btn-block btn-primary">
 

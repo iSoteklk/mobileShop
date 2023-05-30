@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 11:17 AM
+-- Generation Time: May 30, 2023 at 03:55 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -86,7 +86,9 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `fname`, `lname`, `email`, `phone`, `nic`, `add1`, `add2`, `city`, `postal`, `password`) VALUES
-(2, 'Test', 'User', 'user@gmail.com', '1111111111', '111111111V', '1st road', 'no 10', 'Kurunegala', '60000', '12345');
+(2, 'Test', 'User', 'user@gmail.com', '1111111111', '111111111V', '1st road', 'no 10', 'Kurunegala', '60000', '12345'),
+(3, 'John', 'Doe', 'doe@gmail.com', '0789876789', '123387987V', '1st Road', 'Mawathagama', 'Kurunegala', '60000', '12345'),
+(4, 'Ivor', 'Mccray', 'tenujimip@mailinator.com', '1234567898', '123456789V', '20 Oak Parkway', 'In at id voluptatum ', 'Dolore qui pariatur', '17', '12345');
 
 -- --------------------------------------------------------
 
@@ -167,7 +169,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`
