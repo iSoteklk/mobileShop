@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2023 at 03:55 PM
+-- Generation Time: Jun 08, 2023 at 05:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -93,6 +93,35 @@ INSERT INTO `customer` (`id`, `fname`, `lname`, `email`, `phone`, `nic`, `add1`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `oid` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `add1` varchar(100) NOT NULL,
+  `add2` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `postal` varchar(100) NOT NULL,
+  `total` double NOT NULL,
+  `pay_status` varchar(100) NOT NULL,
+  `order_status` varchar(100) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`oid`, `name`, `email`, `phone`, `add1`, `add2`, `city`, `postal`, `total`, `pay_status`, `order_status`, `time`) VALUES
+(7, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 701000, 'Paid', 'Processing', '2023-06-08 14:43:37'),
+(8, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 624000, 'Paid', 'Processing', '2023-06-08 15:07:37');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -121,6 +150,34 @@ INSERT INTO `products` (`id`, `category`, `name`, `image`, `description`, `price
 (9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000),
 (10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sold`
+--
+
+CREATE TABLE `sold` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sold`
+--
+
+INSERT INTO `sold` (`id`, `order_id`, `user_id`, `product_id`, `amount`) VALUES
+(1, 7, 2, 5, 1),
+(2, 7, 2, 9, 1),
+(3, 7, 2, 6, 1),
+(4, 7, 2, 5, 1),
+(5, 7, 2, 2, 1),
+(6, 8, 2, 9, 1),
+(7, 8, 2, 6, 1),
+(8, 8, 2, 8, 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -144,9 +201,21 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`oid`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sold`
+--
+ALTER TABLE `sold`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -157,7 +226,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -172,10 +241,22 @@ ALTER TABLE `customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `sold`
+--
+ALTER TABLE `sold`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

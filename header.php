@@ -77,6 +77,7 @@ if($email != ''){
                             <?php if($email != ''){ ?>
                             <!-- <a href="profile.php"><button class="dropdown-item" type="button">Profile</button></a> -->
                             <a href="cart.php"><button class="dropdown-item" type="button">My Cart</button></a>
+                            <a href="my_orders.php"><button class="dropdown-item" type="button">My Orders</button></a>
                             <a href="logout.php"><button class="dropdown-item" type="button">Logout</button></a>
                             <?php }else{ ?>
 

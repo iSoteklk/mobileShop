@@ -60,6 +60,14 @@ if($result){
                         $id = 1;
                         $query = "SELECT * FROM cart WHERE user = $user_id";
                         $result = mysqli_query($conn, $query);
+                        
+                        //check if there are any rows
+                        if(mysqli_num_rows($result) == 0){
+                            echo "<tr><td colspan='5'>No items in cart</td></tr>";
+                        }
+
+
+
                         while($row = mysqli_fetch_array($result)){
 
                             // select * from the products where id = $row['product']
@@ -114,7 +122,15 @@ if($result){
                             <h5>Total</h5>
                             <h5><?php $total =$sub+1000;  echo $total; echo' LKR';  ?></h5>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                        <?php
+                            if(mysqli_num_rows($result) == 0){
+                                echo "<button class='btn btn-block btn-primary font-weight-bold my-3 py-3'>Proceed To Checkout</button>";
+                            }else{
+                                echo "<a href='checkout.php'> <button class='btn btn-block btn-primary font-weight-bold my-3 py-3'>Proceed To Checkout</button></a>";
+                            }
+                        ?>
+
+                       
                     </div>
                 </div>
             </div>
