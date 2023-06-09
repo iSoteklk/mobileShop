@@ -146,24 +146,22 @@ if($email != ''){
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
-                        <!-- <div class="nav-item dropdown dropright">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i class="fa fa-angle-right float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div>
-                        </div> -->
+                        
                         <a href="shop.php" class="nav-item nav-link">All</a>
-                        <a href="shop.php?category=1" class="nav-item nav-link">Laptops</a>
-                        <a href="shop.php?category=2" class="nav-item nav-link">Processors</a>
-                        <a href="shop.php?category=3" class="nav-item nav-link">Motherboards</a>
-                        <a href="shop.php?category=4" class="nav-item nav-link">RAM</a>
-                        <a href="shop.php?category=5" class="nav-item nav-link">Graphic Cards</a>
-                        <a href="shop.php?category=6" class="nav-item nav-link">Power Supply</a>
-                        <a href="shop.php?category=7" class="nav-item nav-link">Monitors</a>
-                        <a href="shop.php?category=8" class="nav-item nav-link">Keybords and Mouse</a>
-                        <a href="shop.php?category=9" class="nav-item nav-link">Flash Drives</a>
+                        <?php 
+                            //select * from categories table and loop
+                            $sql1 = "SELECT * FROM category";
+                            $result1 = mysqli_query($conn, $sql1);
+                            while($row1 = mysqli_fetch_assoc($result1)){
+
+                                $category_id = $row1['id'];
+                                $category_name = $row1['name'];
+                                echo "<a href='shop.php?category=$category_id' class='nav-item nav-link'>$category_name</a>";
+                                
+                            }
+                        ?>
+
+                        
                         
                          
                     </div>

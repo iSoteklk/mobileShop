@@ -3,11 +3,14 @@ include('header.php');
 // check if category null or not set in url 
 if(isset($_GET['category'])){
     $category = $_GET['category'];
-    //select all products from db
-    $sql = "SELECT * FROM products WHERE category = '$category' ORDER BY id DESC";
-    $result = mysqli_query($conn, $sql);
-    if (!$result) {
-        die("Database query failed: " . mysqli_error($conn));
+    //check if range is set in url
+    if(isset($_GET['range'])){
+        //select products from db where category and range
+        $range = $_GET['range'];
+        $sql = "SELECT * FROM products WHERE category = '$category' AND price BETWEEN 0 AND $range ORDER BY id DESC";
+    }else{
+        //select products from db where category
+        $sql = "SELECT * FROM products WHERE category = '$category' ORDER BY id DESC";
     }
 }else{
     //select all products from db
@@ -48,34 +51,35 @@ if (!$result) {
                 <!-- Price Start -->
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by price</span></h5>
                 <div class="bg-light p-4 mb-30">
-                    <form method="post">
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" name="price[]" checked id="price-all">
-                            <label class="custom-control-label" for="price-all">All Price</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" name="price[]" id="price-1">
-                            <label class="custom-control-label" for="price-1">$0 - $100</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" name="price[]" id="price-2">
-                            <label class="custom-control-label" for="price-2">$100 - $200</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" name="price[]" id="price-3">
-                            <label class="custom-control-label" for="price-3">$200 - $300</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" name="price[]" id="price-4">
-                            <label class="custom-control-label" for="price-4">$300 - $400</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" name="price[]" id="price-5">
-                            <label class="custom-control-label" for="price-5">$400 - $500</label>
-                        </div>
-                        <input type="submit" class="btn btn-block btn-primary mt-4" name="filter" value="Filter">
-                    </form>
-                </div>
+                <form method="post">
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" name="price[]" value="price-all" <?php if(!isset($_POST['price']) || (isset($_POST['price']) && in_array('price-all', $_POST['price']))) echo 'checked'; ?> id="price-all">
+                        <label class="custom-control-label" for="price-all">All Price</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" name="price[]" value="price-1" <?php if(isset($_POST['price']) && in_array('price-1', $_POST['price'])) echo 'checked'; ?> id="price-1">
+                        <label class="custom-control-label" for="price-1">0 - 5000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" name="price[]" value="price-2" <?php if(isset($_POST['price']) && in_array('price-2', $_POST['price'])) echo 'checked'; ?> id="price-2">
+                        <label class="custom-control-label" for="price-2">5000 - 15000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" name="price[]" value="price-3" <?php if(isset($_POST['price']) && in_array('price-3', $_POST['price'])) echo 'checked'; ?> id="price-3">
+                        <label class="custom-control-label" for="price-3">15000 - 50000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" name="price[]" value="price-4" <?php if(isset($_POST['price']) && in_array('price-4', $_POST['price'])) echo 'checked'; ?> id="price-4">
+                        <label class="custom-control-label" for="price-4">50000 - 100000</label>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="checkbox" class="custom-control-input" name="price[]" value="price-5" <?php if(isset($_POST['price']) && in_array('price-5', $_POST['price'])) echo 'checked'; ?> id="price-5">
+                        <label class="custom-control-label" for="price-5">100000 - 1000000</label>
+                    </div>
+                    <input type="submit" class="btn btn-block btn-primary mt-4" name="filter" value="Filter">
+                </form>
+            </div>
+
 
                 <script>
                     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -95,27 +99,29 @@ if (!$result) {
                 if(isset($_POST['filter'])) {
                     if(isset($_POST['price'])) {
                         $selectedCheckboxes = $_POST['price'];
-                        echo "Selected Checkbox(es): ";
                         $checkboxLabels = array(
-                            'price-all' => 'All Price',
-                            'price-1' => '$0 - $100',
-                            'price-2' => '$100 - $200',
-                            'price-3' => '$200 - $300',
-                            'price-4' => '$300 - $400',
-                            'price-5' => '$400 - $500'
+                            'price-all' => null,
+                            'price-1' => 5000,
+                            'price-2' => 15000,
+                            'price-3' => 50000,
+                            'price-4' => 100000,
+                            'price-5' => 1000000
                         );
                         foreach ($selectedCheckboxes as $checkbox) {
                             if(isset($checkboxLabels[$checkbox])) {
-                                echo $checkboxLabels[$checkbox] . " ";
-                            } else {
-                                echo "Unknown ";
+                                // Redirect to page with selected price using JavaScript
+                                echo "<script>window.location.href='shop.php?category=$category&range=$checkboxLabels[$checkbox]'</script>";
+                                exit; // Terminate the script after redirecting
                             }
                         }
+                        // Redirect to page without a selected price
+                        echo "<script>window.location.href='shop.php?category=$category'</script>";
                     } else {
                         echo "No checkbox selected.";
                     }
                 }
                 ?>
+
 
                 <!-- Price End -->
                 
