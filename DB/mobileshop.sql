@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 05:09 PM
+-- Generation Time: Jun 09, 2023 at 12:56 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -64,6 +64,21 @@ INSERT INTO `category` (`id`, `name`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `message` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customer`
 --
 
@@ -116,8 +131,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`oid`, `name`, `email`, `phone`, `add1`, `add2`, `city`, `postal`, `total`, `pay_status`, `order_status`, `time`) VALUES
-(7, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 701000, 'Paid', 'Processing', '2023-06-08 14:43:37'),
-(8, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 624000, 'Paid', 'Processing', '2023-06-08 15:07:37');
+(11, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 67000, 'Paid', 'Processing', '2023-06-09 10:42:48');
 
 -- --------------------------------------------------------
 
@@ -131,24 +145,25 @@ CREATE TABLE `products` (
   `name` varchar(50) NOT NULL,
   `image` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `price` double NOT NULL
+  `price` double NOT NULL,
+  `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `category`, `name`, `image`, `description`, `price`) VALUES
-(1, 1, 'Microfost Surface', 'product-1.jpg', 'Microsoft Surface Laptop Go 12.4\" Touchscreen, Intel Core i5-1035G1 Processor, 4 GB RAM, 128GB PCIe SSD, Up to 13Hr Battery Life, WiFi, Webcam, Windows 11 Pro, Platinum Silver ', 200000),
-(2, 2, 'AMD Ryzen 9 5900X', 'amd.jpg', 'Be unstoppable with the unprecedented speed of the world’s best desktop processors. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead. A fast and easy way to expand and accelerate the storage in a desktop PC with an AMD Ryzen™ processor.', 90000),
-(3, 3, 'MSI B550M PRO-VDH WiFi ProSeries Motherboard', 'MSI-B550M.jpg', 'Powered by AMD Ryzen AM4 processors, the MSI B550M PRO-VDH WIFI combines stable functionality and high-quality assembly to solve professional workflows. ', 30000),
-(4, 4, 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM', 'ram1.jpg', 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM 3200MHz CL16 SK Hynix Chips 288 Pin Desk Ram Memory (KD4AGU880-32A160X) ', 20000),
-(5, 4, 'Corsair Vengeance LPX 32GB', 'ram2.jpg', 'Corsair Vengeance LPX 32GB (2X16GB) DDR4 3200 (PC4-25600) C16 1.35V Desktop Memory - Black, 2 count (pack of 1)', 19000),
-(6, 5, 'ASUS ROG Strix GeForce RTX® 4090', 'vga.jpg', 'The next generation is finally here. The ROG Strix GeForce RTX™ 4090 has been reimagined and improved to house the all new Ada Lovelace architecture from NVIDIA, which delivers up to 2x the performance of the previous generation and brings new and improved NVIDIA technologies to the market.', 560000),
-(7, 6, 'Apevia ATX-PM1000W ', 'power.jpg', 'The Apevia Premier 80+ Gold Efficiency Semi-Modular RGB Gaming PSU line of power supplies is available in 650W / 850W / 1000W wattage options and brings a stylish design while providing form and function to your system to suit your needs. It supports the newer ATX 12v2.3 standard and single rail setup. Boasting a cool 135mm RGB fan, it adds a nice glow to any computer.', 21000),
-(8, 7, 'AXM 2718 27\" WQHD 2560 x 1440 60Hz', 'monitor.jpg', 'AXM 2718 27\" WQHD 2560 x 1440 60Hz IPS Gaming Monitor, Adaptive-Sync (FreeSync Compatible), Height Adjustable Stand, Display Port*1/ HDMI Port*2, with Speaker', 51000),
-(9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000),
-(10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000);
+INSERT INTO `products` (`id`, `category`, `name`, `image`, `description`, `price`, `amount`) VALUES
+(1, 1, 'Microfost Surface', 'product-1.jpg', 'Microsoft Surface Laptop Go 12.4\" Touchscreen, Intel Core i5-1035G1 Processor, 4 GB RAM, 128GB PCIe SSD, Up to 13Hr Battery Life, WiFi, Webcam, Windows 11 Pro, Platinum Silver ', 200000, 10),
+(2, 2, 'AMD Ryzen 9 5900X', 'amd.jpg', 'Be unstoppable with the unprecedented speed of the world’s best desktop processors. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead. A fast and easy way to expand and accelerate the storage in a desktop PC with an AMD Ryzen™ processor.', 90000, 10),
+(3, 3, 'MSI B550M PRO-VDH WiFi ProSeries Motherboard', 'MSI-B550M.jpg', 'Powered by AMD Ryzen AM4 processors, the MSI B550M PRO-VDH WIFI combines stable functionality and high-quality assembly to solve professional workflows. ', 30000, 10),
+(4, 4, 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM', 'ram1.jpg', 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM 3200MHz CL16 SK Hynix Chips 288 Pin Desk Ram Memory (KD4AGU880-32A160X) ', 20000, 10),
+(5, 4, 'Corsair Vengeance LPX 32GB', 'ram2.jpg', 'Corsair Vengeance LPX 32GB (2X16GB) DDR4 3200 (PC4-25600) C16 1.35V Desktop Memory - Black, 2 count (pack of 1)', 19000, 10),
+(6, 5, 'ASUS ROG Strix GeForce RTX® 4090', 'vga.jpg', 'The next generation is finally here. The ROG Strix GeForce RTX™ 4090 has been reimagined and improved to house the all new Ada Lovelace architecture from NVIDIA, which delivers up to 2x the performance of the previous generation and brings new and improved NVIDIA technologies to the market.', 560000, 10),
+(7, 6, 'Apevia ATX-PM1000W ', 'power.jpg', 'The Apevia Premier 80+ Gold Efficiency Semi-Modular RGB Gaming PSU line of power supplies is available in 650W / 850W / 1000W wattage options and brings a stylish design while providing form and function to your system to suit your needs. It supports the newer ATX 12v2.3 standard and single rail setup. Boasting a cool 135mm RGB fan, it adds a nice glow to any computer.', 21000, 10),
+(8, 7, 'AXM 2718 27\" WQHD 2560 x 1440 60Hz', 'monitor.jpg', 'AXM 2718 27\" WQHD 2560 x 1440 60Hz IPS Gaming Monitor, Adaptive-Sync (FreeSync Compatible), Height Adjustable Stand, Display Port*1/ HDMI Port*2, with Speaker', 51000, 9),
+(9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000, 9),
+(10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000, 9);
 
 -- --------------------------------------------------------
 
@@ -169,14 +184,9 @@ CREATE TABLE `sold` (
 --
 
 INSERT INTO `sold` (`id`, `order_id`, `user_id`, `product_id`, `amount`) VALUES
-(1, 7, 2, 5, 1),
-(2, 7, 2, 9, 1),
-(3, 7, 2, 6, 1),
-(4, 7, 2, 5, 1),
-(5, 7, 2, 2, 1),
-(6, 8, 2, 9, 1),
-(7, 8, 2, 6, 1),
-(8, 8, 2, 8, 1);
+(12, 11, 2, 10, 1),
+(13, 11, 2, 9, 1),
+(14, 11, 2, 8, 1);
 
 --
 -- Indexes for dumped tables
@@ -192,6 +202,12 @@ ALTER TABLE `cart`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -226,13 +242,19 @@ ALTER TABLE `sold`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -244,7 +266,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -256,7 +278,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sold`
 --
 ALTER TABLE `sold`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

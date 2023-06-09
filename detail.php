@@ -63,10 +63,21 @@ $row = mysqli_fetch_array($result);
         <div class="d-flex align-items-center mb-4 pt-2">
             <!--  -->
             <div class="input-group quantity mr-3" style="width: 130px;">
-                
-                <input type="number" class="form-control bg-secondary border-0 text-center" name="amount" value="1" id="amountInput">
-                
+                <input type="number" class="form-control bg-secondary border-0 text-center" name="amount" value="1" id="amountInput" oninput="validateAmount(this)">
             </div>
+
+            <script>
+                function validateAmount(input) {
+                    if (input.value <= 0) {
+                        input.value = 1; // Set the value to 1 if it's negative or 0
+                    }
+
+                    if (input.value > <?php echo $row['amount']; ?>) {
+                        input.value = <?php echo $row['amount']; ?>; // Set the value to 1 if it's negative or 0
+                    }
+                }
+            </script>
+            <div style="padding-right: 10px;"><small><?php echo $row['amount'] ?>(Items) Left</small></div>
 
             <a class="" href="add_to_cart.php?id=<?php echo $row['id']; ?>&amount=1" id="addToCartBtn">
                 <button class="btn btn-primary px-3">

@@ -146,7 +146,7 @@ include 'header.php';
         <div class="row px-xl-5">
             <!-- loop 10 time php -->
             <?php
-                $sql = "SELECT * FROM products ORDER BY id DESC LIMIT 8";
+                $sql = "SELECT * FROM products WHERE amount > 0 ORDER BY id DESC LIMIT 8";
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)){
             ?>
@@ -164,12 +164,7 @@ include 'header.php';
                         <h5><?php echo $row['price'].' LKR'; ?></h5><h6 class="text-muted ml-2"><del><?php echo $row['price']+5000; echo' LKR'; ?></del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small>(99)</small>
+                            <small><?php echo $row['amount'] ?>(Items) Left</small>
                         </div>
                     </div>
                 </div>

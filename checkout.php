@@ -186,17 +186,17 @@ $result = mysqli_query($conn, $query);
                         //select all from cart where user = $user_id
                         $query6 = "SELECT * FROM cart WHERE user = $user_id;";
                         $result6 = mysqli_query($conn, $query6);
-                        echo 'here1';
                         
                         while($row6 = mysqli_fetch_assoc($result6)){
-                            echo 'here2';
                             $user = $row6['user'];
                             $pid = $row6['product'];
                             $qty = $row6['amount'];
                             $sql7 = "INSERT INTO sold (order_id, user_id, product_id, amount) VALUES ($oid,$user_id, $pid, $qty)";
                             $result7 = mysqli_query($conn, $sql7);
-                        }
 
+                            $sql8 = "UPDATE products SET amount = amount - $qty WHERE id = $pid";
+                            $result8 = mysqli_query($conn, $sql8);
+                        }
 
 
 

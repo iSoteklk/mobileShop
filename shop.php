@@ -7,10 +7,10 @@ if(isset($_GET['category'])){
     if(isset($_GET['range'])){
         //select products from db where category and range
         $range = $_GET['range'];
-        $sql = "SELECT * FROM products WHERE category = '$category' AND price BETWEEN 0 AND $range ORDER BY id DESC";
+        $sql = "SELECT * FROM products WHERE category = '$category' AND price BETWEEN 0 AND $range AND amount > 0 ORDER BY id DESC";
     }else{
         //select products from db where category
-        $sql = "SELECT * FROM products WHERE category = '$category' ORDER BY id DESC";
+        $sql = "SELECT * FROM products WHERE category = '$category' AND amount > 0 ORDER BY id DESC";
     }
 }else{
     //select all products from db
@@ -164,12 +164,7 @@ if (!$result) {
                                     <h5><?php echo $row['price'].' LKR'; ?></h5><h6 class="text-muted ml-2"><del><?php echo $row['price']+5000; echo ' LKR'; ?></del></h6>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center mb-1">
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star-half-alt text-primary mr-1"></small>
-                                    <small>(99)</small>
+                                <small><?php echo $row['amount'] ?>(Items) Left</small>
                                 </div>
                             </div>
                         </div>
