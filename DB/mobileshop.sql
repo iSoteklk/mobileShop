@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2023 at 12:56 PM
+-- Generation Time: Jun 28, 2023 at 04:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -59,7 +59,9 @@ INSERT INTO `category` (`id`, `name`, `image`) VALUES
 (6, 'Power Supply', '6.jpg'),
 (7, 'Monitors', '7.jpg'),
 (8, 'Keybords and Mouse', '8.jpg'),
-(9, 'Flash Drives', '9.jpg');
+(9, 'Flash Drives', '9.jpg'),
+(10, 'Phones', '10.jpg'),
+(13, 'Headphones', '1687415112_613axEScHJL._AC_SL1500_.jpg');
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`oid`, `name`, `email`, `phone`, `add1`, `add2`, `city`, `postal`, `total`, `pay_status`, `order_status`, `time`) VALUES
-(11, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 67000, 'Paid', 'Processing', '2023-06-09 10:42:48');
+(11, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 67000, 'Paid', 'Processing', '2023-06-09 10:42:48'),
+(12, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 109000, 'Paid', 'Processing', '2023-06-13 12:55:05');
 
 -- --------------------------------------------------------
 
@@ -158,12 +161,13 @@ INSERT INTO `products` (`id`, `category`, `name`, `image`, `description`, `price
 (2, 2, 'AMD Ryzen 9 5900X', 'amd.jpg', 'Be unstoppable with the unprecedented speed of the world’s best desktop processors. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead. A fast and easy way to expand and accelerate the storage in a desktop PC with an AMD Ryzen™ processor.', 90000, 10),
 (3, 3, 'MSI B550M PRO-VDH WiFi ProSeries Motherboard', 'MSI-B550M.jpg', 'Powered by AMD Ryzen AM4 processors, the MSI B550M PRO-VDH WIFI combines stable functionality and high-quality assembly to solve professional workflows. ', 30000, 10),
 (4, 4, 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM', 'ram1.jpg', 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM 3200MHz CL16 SK Hynix Chips 288 Pin Desk Ram Memory (KD4AGU880-32A160X) ', 20000, 10),
-(5, 4, 'Corsair Vengeance LPX 32GB', 'ram2.jpg', 'Corsair Vengeance LPX 32GB (2X16GB) DDR4 3200 (PC4-25600) C16 1.35V Desktop Memory - Black, 2 count (pack of 1)', 19000, 10),
+(5, 4, 'Corsair Vengeance LPX 32GB', 'ram2.jpg', 'Corsair Vengeance LPX 32GB (2X16GB) DDR4 3200 (PC4-25600) C16 1.35V Desktop Memory - Black, 2 count (pack of 1)', 14000, 10),
 (6, 5, 'ASUS ROG Strix GeForce RTX® 4090', 'vga.jpg', 'The next generation is finally here. The ROG Strix GeForce RTX™ 4090 has been reimagined and improved to house the all new Ada Lovelace architecture from NVIDIA, which delivers up to 2x the performance of the previous generation and brings new and improved NVIDIA technologies to the market.', 560000, 10),
 (7, 6, 'Apevia ATX-PM1000W ', 'power.jpg', 'The Apevia Premier 80+ Gold Efficiency Semi-Modular RGB Gaming PSU line of power supplies is available in 650W / 850W / 1000W wattage options and brings a stylish design while providing form and function to your system to suit your needs. It supports the newer ATX 12v2.3 standard and single rail setup. Boasting a cool 135mm RGB fan, it adds a nice glow to any computer.', 21000, 10),
 (8, 7, 'AXM 2718 27\" WQHD 2560 x 1440 60Hz', 'monitor.jpg', 'AXM 2718 27\" WQHD 2560 x 1440 60Hz IPS Gaming Monitor, Adaptive-Sync (FreeSync Compatible), Height Adjustable Stand, Display Port*1/ HDMI Port*2, with Speaker', 51000, 9),
-(9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000, 9),
-(10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000, 9);
+(9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000, 10),
+(10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000, 9),
+(11, 10, 'iPhone 14 Pro', 'iphone.jpg', 'The iPhone 14 Pro and Pro Max feature a Super Retina XDR OLED display with a typical maximum brightness of 1,000 nits. However, it can go all the way up to 1,600 nits while watching HDR videos, and 2,000 nits outdoors. The display has a refresh rate of 120 Hz and utilizes LTPO technology.', 375000, 20);
 
 -- --------------------------------------------------------
 
@@ -186,7 +190,8 @@ CREATE TABLE `sold` (
 INSERT INTO `sold` (`id`, `order_id`, `user_id`, `product_id`, `amount`) VALUES
 (12, 11, 2, 10, 1),
 (13, 11, 2, 9, 1),
-(14, 11, 2, 8, 1);
+(14, 11, 2, 8, 1),
+(15, 12, 2, 9, 9);
 
 --
 -- Indexes for dumped tables
@@ -242,13 +247,13 @@ ALTER TABLE `sold`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -266,19 +271,19 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `sold`
 --
 ALTER TABLE `sold`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
