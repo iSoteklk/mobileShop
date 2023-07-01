@@ -24,9 +24,9 @@ $result = mysqli_query($conn, $sql);
                 <!-- Form content -->
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="input1">Select an Image (150 X 150)</label>
+                        <label for="input1">Select an Image (500 X 500)</label>
                         <input type="file" class="form-control-file" name="input1" id="input1" onchange="previewImage(event)" required>
-                        <img id="imagePreview" src="./assets/images/categories/150x150.png" alt="Image Preview" style="max-width: 100%; max-height: 200px; margin-top: 10px; ">
+                        <img id="imagePreview" src="./assets/images/products/500x500.jpg" alt="Image Preview" style="max-width: 100%; max-height: 200px; margin-top: 10px; ">
                     </div>
                     <div class="form-group">
                         <label for="input2">Category</label>
@@ -41,11 +41,11 @@ $result = mysqli_query($conn, $sql);
                     </div>
                     <div class="form-group">
                         <label for="input2">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter category name" required>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter  name" required>
                     </div>
                     <div class="form-group">
                         <label for="input2">Description</label>
-                        <input type="text" class="form-control" name="desc" id="desc" placeholder="Enter category name" required>
+                        <input type="text" class="form-control" name="desc" id="desc" placeholder="Enter description" required>
                     </div>
                     <div class="form-group">
                         <label for="input2">Price</label>
@@ -63,23 +63,27 @@ $result = mysqli_query($conn, $sql);
                         $name = $_POST['name'];
                         $image = $_FILES['input1']['name'];
                         $tmp_name = $_FILES['input1']['tmp_name'];
+                        $category = $_POST['category'];
+                        $desc = $_POST['desc'];
+                        $price = $_POST['price'];
+                        $amount = $_POST['amount'];
 
                         // Generate a unique filename by appending the current timestamp
                         $currentTimestamp = time();
                         $filename = $currentTimestamp . '_' . $image;
 
-                        $path = './assets/images/categories/' . $filename;
+                        $path = './assets/images/products/' . $filename;
                         move_uploaded_file($tmp_name, $path);
 
                         // Insert the data into the database
-                        $sql = "INSERT INTO category (name, image) VALUES ('$name', '$filename')";
+                        $sql = "INSERT INTO products (category,name, image, description, price, amount) VALUES ('$category','$name', '$filename','$desc','$price','$amount')";
                         $result = mysqli_query($conn, $sql);
 
                         // If the query is successful, redirect to categories.php
                         if ($result) {
                             //alert
                             echo '<div class="alert alert-success">Category added successfully.</div>';
-                            echo "<script>window.location.href='category_view.php';</script>";
+                            echo "<script>window.location.href='product_view.php';</script>";
                         } else {
                             echo '<div class="alert alert-danger">Query error: ' . mysqli_error($conn) . '</div>';
                         }
@@ -98,7 +102,7 @@ $result = mysqli_query($conn, $sql);
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
         // Set the default image
-        var defaultImage = './assets/images/categories/150x150.png';
+        var defaultImage = './assets/images/products/500x500.jpg';
         var imagePreview = document.getElementById('imagePreview');
         imagePreview.src = defaultImage;
     });

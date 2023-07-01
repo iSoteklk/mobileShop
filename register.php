@@ -124,7 +124,7 @@ include('connection.php');
                                 $password1 = $_POST['password1'];
 
                                 if($password == $password1){
-                                    $sql = "INSERT INTO customer (fname, lname, email, phone, nic, add1, add2, city, postal, password) VALUES ('$fname', '$lname', '$email', '$phone', '$nic', '$add1', '$add2', '$city', '$postal', '$password')";
+                                    $sql = "INSERT INTO customer (fname, lname, email, phone, nic, add1, add2, city, postal, password, status) VALUES ('$fname', '$lname', '$email', '$phone', '$nic', '$add1', '$add2', '$city', '$postal', '$password',0)";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
 
