@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2023 at 04:23 PM
+-- Generation Time: Jul 01, 2023 at 02:10 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -78,6 +78,16 @@ CREATE TABLE `contact` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `name`, `email`, `subject`, `message`, `status`) VALUES
+(3, 'Elijah Joyner', 'wavewy@mailinator.com', 'Necessitatibus at qu', 'Obcaecati autem magn', 0),
+(4, 'Megan Mcguire', 'cenopox@mailinator.com', 'Corporis commodi quo', 'Et id ea eaque impe', 0),
+(5, 'Kibo Cardenas', 'zovuvupeso@mailinator.com', 'Autem ab reprehender', 'Quia deserunt ipsum ', 0),
+(6, 'Roary House', 'bemajuw@mailinator.com', 'Corrupti quia tempo', 'Facilis consequatur', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -95,17 +105,52 @@ CREATE TABLE `customer` (
   `add2` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL,
   `postal` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `fname`, `lname`, `email`, `phone`, `nic`, `add1`, `add2`, `city`, `postal`, `password`) VALUES
-(2, 'Test', 'User', 'user@gmail.com', '1111111111', '111111111V', '1st road', 'no 10', 'Kurunegala', '60000', '12345'),
-(3, 'John', 'Doe', 'doe@gmail.com', '0789876789', '123387987V', '1st Road', 'Mawathagama', 'Kurunegala', '60000', '12345'),
-(4, 'Ivor', 'Mccray', 'tenujimip@mailinator.com', '1234567898', '123456789V', '20 Oak Parkway', 'In at id voluptatum ', 'Dolore qui pariatur', '17', '12345');
+INSERT INTO `customer` (`id`, `fname`, `lname`, `email`, `phone`, `nic`, `add1`, `add2`, `city`, `postal`, `password`, `status`) VALUES
+(2, 'Test', 'User', 'user@gmail.com', '1111111111', '111111111V', '1st road', 'no 10', 'Kurunegala', '60000', '12345', 0),
+(3, 'John', 'Doe', 'doe@gmail.com', '0789876789', '123387987V', '1st Road', 'Mawathagama', 'Kurunegala', '60000', '12345', 0),
+(4, 'Ivor', 'Mccray', 'tenujimip@mailinator.com', '1234567898', '123456789V', '20 Oak Parkway', 'In at id voluptatum ', 'Dolore qui pariatur', '17', '12345', 0),
+(5, 'John', 'Doe', 'doej@gmail.com', '0722448855', '991967799V', '1/33', '1st Cross-Road', 'Ganewatta', '70600', '12345', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `id` int(11) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `dob` varchar(50) NOT NULL,
+  `contact` varchar(50) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `add1` varchar(50) NOT NULL,
+  `add2` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `postal` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `changed` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `fname`, `lname`, `email`, `gender`, `dob`, `contact`, `title`, `add1`, `add2`, `city`, `postal`, `password`, `changed`, `status`) VALUES
+(1, 'Test', 'Admin', 'admin@gmail.com', 'Male', '1900-01-01', '0711111111', 'admin', '1st rd', 'Kurunegala', 'Kurunegala', '60000', '12345', 'Yes', 'Active'),
+(2, 'Test', 'Test', 'test2@gmail.com', 'Male', '2023-05-18', '111111111', 'emp', 'te', 'te', 'Kurunegala', '60000', 'test@123', 'No', 'Blocked'),
+(4, 'Super', 'Admin', 'superadmin@gmail.com', 'Male', '1999-09-09', '0378987678', 'admin', 'No 9', 'Main Road', 'Kurunegala', '60000', 'Super@123', 'No', 'Active');
 
 -- --------------------------------------------------------
 
@@ -133,8 +178,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`oid`, `name`, `email`, `phone`, `add1`, `add2`, `city`, `postal`, `total`, `pay_status`, `order_status`, `time`) VALUES
-(11, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 67000, 'Paid', 'Processing', '2023-06-09 10:42:48'),
-(12, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 109000, 'Paid', 'Processing', '2023-06-13 12:55:05');
+(11, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 67000, 'Paid', 'Shipped', '2023-07-01 09:40:09'),
+(12, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 109000, 'Paid', 'Completed', '2023-07-01 09:50:35'),
+(13, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 406000, 'Refunded', 'Cancelled', '2023-07-01 10:16:40');
 
 -- --------------------------------------------------------
 
@@ -167,7 +213,8 @@ INSERT INTO `products` (`id`, `category`, `name`, `image`, `description`, `price
 (8, 7, 'AXM 2718 27\" WQHD 2560 x 1440 60Hz', 'monitor.jpg', 'AXM 2718 27\" WQHD 2560 x 1440 60Hz IPS Gaming Monitor, Adaptive-Sync (FreeSync Compatible), Height Adjustable Stand, Display Port*1/ HDMI Port*2, with Speaker', 51000, 9),
 (9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000, 10),
 (10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000, 9),
-(11, 10, 'iPhone 14 Pro', 'iphone.jpg', 'The iPhone 14 Pro and Pro Max feature a Super Retina XDR OLED display with a typical maximum brightness of 1,000 nits. However, it can go all the way up to 1,600 nits while watching HDR videos, and 2,000 nits outdoors. The display has a refresh rate of 120 Hz and utilizes LTPO technology.', 375000, 20);
+(11, 10, 'iPhone 14 Pro', 'iphone.jpg', 'The iPhone 14 Pro and Pro Max feature a Super Retina XDR OLED display with a typical maximum brightness of 1,000 nits. However, it can go all the way up to 1,600 nits while watching HDR videos, and 2,000 nits outdoors. The display has a refresh rate of 120 Hz and utilizes LTPO technology.', 375000, 20),
+(12, 13, 'Raycon Everyday Wireless ', '1688194785_61SFfv24dLL._AC_SL1500_.jpg', 'Bluetooth Over Ear Headphones, with Active Noise Cancelling, Awareness Mode and Built in Microphone, IPX 4 Water Resistance, 38 Hours of Battery Life', 27000, 20);
 
 -- --------------------------------------------------------
 
@@ -222,6 +269,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -247,7 +300,7 @@ ALTER TABLE `sold`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -259,31 +312,37 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `sold`
 --
 ALTER TABLE `sold`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

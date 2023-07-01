@@ -132,6 +132,48 @@ include 'connection.php';
             </li>
 
             <!-- sssssssssssssssssssssssssssssssssssss -->
+           
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities7"
+                    aria-expanded="true" aria-controls="collapseUtilities7">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Employees</span>
+                </a>
+                <div id="collapseUtilities7" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Employee Management:</h6>
+                        <a class="collapse-item" href="emp_view.php">View</a>
+                        <a class="collapse-item" href="emp_add.php">Add</a>
+                    </div>
+                </div>
+            </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -166,12 +208,11 @@ include 'connection.php';
                 </div>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            
 
-            <!-- Nav Item - Pages Collapse Menu -->
+
+
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
