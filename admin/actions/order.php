@@ -6,8 +6,20 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
     $status1 = $_GET['status'];
 
     // Prepare the SQL statement using prepared statements
-    $stmt = $conn->prepare("UPDATE orders SET order_status = ? WHERE oid = ?");
-    $stmt->bind_param("si", $status1, $id);
+    $stmt = "";
+    $stmt = "";
+
+    if($status1 == 'Cancelled'){
+        $stmt = $conn->prepare("UPDATE orders SET order_status = ? WHERE oid = ?");
+        $stmt->bind_param("si", $status1,'Refunded', $id);
+       
+    }else{
+        $stmt = $conn->prepare("UPDATE orders SET order_status = ?, pay_status = ? WHERE oid = ?");
+        $stmt->bind_param("si", $status1, $id);
+
+    }
+    
+    
     $res = $stmt->execute();
 
     if ($res) {
@@ -21,6 +33,26 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
         }
         
         if($status1 == 'Cancelled'){
+
+
+            $sql = "SELECT * FROM sold WHERE order_id = $id";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($result)){
+                $product_id = $row['product_id'];
+                $amount = $row['amount'];
+
+                $updateSql = "UPDATE products SET amount = amount + $amount WHERE id = $product_id";
+                mysqli_query($conn, $updateSql);
+            }
+
+
+            $updateSql = "DELETE FROM sold WHERE order_id = $id";
+                mysqli_query($conn, $updateSql);
+
+
+
+
+
             header("Location: ../order_cancelled.php");
         } 
         
