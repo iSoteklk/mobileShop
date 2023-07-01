@@ -1,3 +1,8 @@
+<?php
+ session_start();
+ include('connection.php');
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,21 +38,21 @@
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                        <div class="row justify-content-center">
+                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
+                            <div class="col-lg-8">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <form class="user" method="POST">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="email" name="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address..." required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
@@ -58,6 +63,48 @@
                                         </div>
                                         <input class="btn btn-primary btn-user btn-block" type="submit" name="submit" value="Log In">
                                     </form>
+
+
+                                    <?php
+                  
+                                        if(isset($_POST["submit"])){
+
+                                            $password = $_POST["password"];
+                                            $username = $_POST["email"];
+
+                                            $result = mysqli_query($conn,"SELECT * FROM employees WHERE email = '$username';");
+                            
+                                            $row = mysqli_fetch_array($result);
+                                            
+                                            if($row['status'] == 'Blocked'){
+
+                                                echo "<script>alert(Your account is blocked)</script>";
+
+                                            }else{
+                                                if($row['email'] == $username && $row['password'] == $password ){
+
+                                                    // sessions
+                                                        $_SESSION['id']=$row['id'];
+                                                        $_SESSION['email']=$row['email'];
+                                                        $_SESSION['fname']=$row['fname'];
+                                                        $_SESSION['lname']=$row['lname'];
+                                                        $_SESSION['contact']=$row['contact'];
+                                                        $_SESSION['status']=$row['status'];
+                                                        $_SESSION['title']=$row['title'];
+                                                        //redirection in js
+                                                        echo '<script type="text/javascript">window.location.href = "index.php";</script>';
+                                                    }else{
+                                                        ?> <script>alert('Wrong Credentials....') </script><?php
+                                                        echo '<script type="text/javascript">window.location.href = "login.php";</script>';
+                                                        die();
+                                                    }
+                                            }
+
+                                        }
+                                    
+                                    ?>
+
+
                                 </div>
                             </div>
                         </div>
