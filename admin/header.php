@@ -101,6 +101,22 @@ include 'connection.php';
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4"
+                    aria-expanded="true" aria-controls="collapseTwo4">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Oders</span>
+                </a>
+                <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Orders:</h6>
+                        <a class="collapse-item" href="order_pending.php">New</a>
+                        <a class="collapse-item" href="order_shipped.php">Shipped</a>
+                        <a class="collapse-item" href="order_completed.php">Completed</a>
+                        <a class="collapse-item" href="order_cancelled.php">Cancelled</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- sssssssssssssssssssssssssssssssssssss -->
             <li class="nav-item">
