@@ -1,5 +1,7 @@
 <?php
-//php connection
+//session start
+session_start();
+
 include('connection.php');
 ?>
 
@@ -56,8 +58,10 @@ include('connection.php');
 
                                 <div class="d-flex mb-5 align-items-center">
                                     
-                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                                    <span class="ml-auto"><a href="register.php" class="forgot-pass">Need an Account? Register</a></span>
+                                    
                                 </div>
+                                
 
                                 <input type="submit" value="Log In" name="login" class="btn text-white btn-block btn-primary">
 
@@ -72,7 +76,11 @@ include('connection.php');
                                     $query_run=mysqli_query($conn,$query);
                                     if(mysqli_num_rows($query_run)>0)
                                     {
-                                        // $_SESSION['email']=$email;
+                                        $_SESSION['email']=$email;
+                                        $_SESSION['id']=$row['id'];
+                                        $_SESSION['fname']=$row['fname'];
+                                        $_SESSION['lanme']=$row['lanme'];
+
                                         header('location:index.php');
                                     }
                                     else

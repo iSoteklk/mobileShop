@@ -1,5 +1,6 @@
 <?php
 //php connection
+session_start();
 include('connection.php');
 ?>
 
@@ -123,9 +124,15 @@ include('connection.php');
                                 $password1 = $_POST['password1'];
 
                                 if($password == $password1){
-                                    $sql = "INSERT INTO customer (fname, lname, email, phone, nic, add1, add2, city, postal, password) VALUES ('$fname', '$lname', '$email', '$phone', '$nic', '$add1', '$add2', '$city', '$postal', '$password')";
+                                    $sql = "INSERT INTO customer (fname, lname, email, phone, nic, add1, add2, city, postal, password, status) VALUES ('$fname', '$lname', '$email', '$phone', '$nic', '$add1', '$add2', '$city', '$postal', '$password',0)";
                                     $result = mysqli_query($conn, $sql);
                                     if($result){
+
+                                        $_SESSION['email']=$email;
+                                        $_SESSION['id']='';
+                                        $_SESSION['fname']=$fname;
+                                        $_SESSION['lanme']=$lname;
+
                                         echo "<script>alert('Registration Successful!')</script>";
                                         echo "<script>window.open('index.php','_self')</script>";
                                     }else{
