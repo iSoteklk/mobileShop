@@ -68,7 +68,7 @@ $result = mysqli_query($conn, $sql);
                                             <td><?php echo $row['price']; ?></td>
                                             <td><?php echo $row['amount']; ?></td>
                                             <td>
-                                                <a href="category_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Update</a>
+                                                <a href="product_update.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Update</a>
                                             </td>
                                         </tr>
                                 <?php

@@ -94,7 +94,7 @@ $result = mysqli_query($conn, $sql);
                                         $id++;
                                     }
                                 } else {
-                                    echo '<tr><td colspan="4">No Categories found</td></tr>';
+                                    echo '<tr><td colspan="4">No new orders found</td></tr>';
                                 }
                                 ?>
                             </tbody>
