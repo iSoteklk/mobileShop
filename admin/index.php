@@ -3,6 +3,19 @@ include 'header.php';
 ?>
 <title>FT|Dashboard</title>
 
+<style>
+    body,
+    html {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .container-fluid {
+        height: 100%;
+        overflow-y: auto;
+    }
+</style>
+
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -175,9 +188,10 @@ include 'header.php';
                         </div>
                     </div>
                 </div>
+            </div>
 
             <!-- Content Row -->
-            
+</div>    
         <!-- /.container-fluid -->
 
     </div>
@@ -249,7 +263,8 @@ include 'header.php';
         $data = [];
 
 
-        $ss1 = "SELECT DATE_FORMAT(time, '%Y-%m') AS formatted_time, total FROM orders ORDER BY formatted_time";
+        $ss1 = "SELECT DATE_FORMAT(time, '%Y-%m') AS formatted_time, SUM(total) AS total FROM orders GROUP BY formatted_time ORDER BY formatted_time";
+
             $results1 = mysqli_query($conn, $ss1);
             while($rows1 = mysqli_fetch_assoc($results1)){
             $labels[] = $rows1['formatted_time'];
