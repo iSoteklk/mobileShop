@@ -10,11 +10,11 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
     $stmt = "";
 
     if($status1 == 'Cancelled'){
-        $stmt = $conn->prepare("UPDATE orders SET order_status = ? WHERE oid = ?");
+        $stmt = $conn->prepare("UPDATE orders SET order_status = ?, pay_status = ? WHERE oid = ?");
         $stmt->bind_param("si", $status1,'Refunded', $id);
        
     }else{
-        $stmt = $conn->prepare("UPDATE orders SET order_status = ?, pay_status = ? WHERE oid = ?");
+        $stmt = $conn->prepare("UPDATE orders SET order_status = ? WHERE oid = ?");
         $stmt->bind_param("si", $status1, $id);
 
     }

@@ -11,7 +11,7 @@ include 'connection.php';
 $user_id = 0;
 
 // get id from customer table where email = session email
-if($email != ''){
+if(isset($_SESSION['email'])){
     $query = "SELECT * FROM customer WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
     
@@ -54,6 +54,8 @@ if($email != ''){
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -196,11 +198,17 @@ if($email != ''){
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
                                 <?php
+                                  if(isset($_SESSION['email'])){
                                     //select count from cart whre user = id 
                                     $sql = "SELECT COUNT(*) AS count FROM cart WHERE user = $user_id";
                                     $result = mysqli_query($conn, $sql);
                                     $row = mysqli_fetch_assoc($result);
                                     echo $row['count'];
+
+                                  }else{
+                                    echo '0';
+                                  }
+                                    
 
                                 ?>
                             </span>

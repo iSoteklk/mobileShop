@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2023 at 02:10 PM
+-- Generation Time: Jul 05, 2023 at 04:14 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -34,6 +34,13 @@ CREATE TABLE `cart` (
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user`, `product`, `amount`) VALUES
+(101, 2, 11, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -51,7 +58,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `image`) VALUES
-(1, 'Laptops', '1.jpg'),
+(1, 'Laptops', '1688276117_cat-1.jpg'),
 (2, 'Processors', '2.jpg'),
 (3, 'Motherboards', '3.jpg'),
 (4, 'RAM', '4.jpg'),
@@ -179,8 +186,11 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`oid`, `name`, `email`, `phone`, `add1`, `add2`, `city`, `postal`, `total`, `pay_status`, `order_status`, `time`) VALUES
 (11, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 67000, 'Paid', 'Shipped', '2023-07-01 09:40:09'),
-(12, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 109000, 'Paid', 'Completed', '2023-07-01 09:50:35'),
-(13, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 406000, 'Refunded', 'Cancelled', '2023-07-01 10:16:40');
+(12, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 109000, 'Paid', 'Completed', '2023-06-01 09:50:35'),
+(13, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 406000, 'Refunded', 'Cancelled', '2023-07-01 10:16:40'),
+(14, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 1008000, 'Paid', 'Completed', '2022-07-01 16:57:14'),
+(15, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 834000, 'Paid', 'Completed', '2023-05-02 06:04:40'),
+(16, ' Test   User', 'user@gmail.com', ' 1111111111', ' 1st road', ' no 10', ' Kurunegala', ' 60000', 13000, 'Paid', 'Processing', '2023-07-02 06:04:12');
 
 -- --------------------------------------------------------
 
@@ -204,16 +214,16 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `category`, `name`, `image`, `description`, `price`, `amount`) VALUES
 (1, 1, 'Microfost Surface', 'product-1.jpg', 'Microsoft Surface Laptop Go 12.4\" Touchscreen, Intel Core i5-1035G1 Processor, 4 GB RAM, 128GB PCIe SSD, Up to 13Hr Battery Life, WiFi, Webcam, Windows 11 Pro, Platinum Silver ', 200000, 10),
-(2, 2, 'AMD Ryzen 9 5900X', 'amd.jpg', 'Be unstoppable with the unprecedented speed of the world’s best desktop processors. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead. A fast and easy way to expand and accelerate the storage in a desktop PC with an AMD Ryzen™ processor.', 90000, 10),
+(2, 2, 'AMD Ryzen 9 5900X', 'amd.jpg', 'Be unstoppable with the unprecedented speed of the world’s best desktop processors. AMD Ryzen 5000 Series processors deliver the ultimate in high performance, whether you’re playing the latest games, designing the next skyscraper or crunching scientific data. With AMD Ryzen, you’re always in the lead. A fast and easy way to expand and accelerate the storage in a desktop PC with an AMD Ryzen™ processor.', 90000, 20),
 (3, 3, 'MSI B550M PRO-VDH WiFi ProSeries Motherboard', 'MSI-B550M.jpg', 'Powered by AMD Ryzen AM4 processors, the MSI B550M PRO-VDH WIFI combines stable functionality and high-quality assembly to solve professional workflows. ', 30000, 10),
 (4, 4, 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM', 'ram1.jpg', 'KLEVV CRAS X RGB 32GB (2 x 16GB) DDR4 Gaming UDIMM 3200MHz CL16 SK Hynix Chips 288 Pin Desk Ram Memory (KD4AGU880-32A160X) ', 20000, 10),
-(5, 4, 'Corsair Vengeance LPX 32GB', 'ram2.jpg', 'Corsair Vengeance LPX 32GB (2X16GB) DDR4 3200 (PC4-25600) C16 1.35V Desktop Memory - Black, 2 count (pack of 1)', 14000, 10),
-(6, 5, 'ASUS ROG Strix GeForce RTX® 4090', 'vga.jpg', 'The next generation is finally here. The ROG Strix GeForce RTX™ 4090 has been reimagined and improved to house the all new Ada Lovelace architecture from NVIDIA, which delivers up to 2x the performance of the previous generation and brings new and improved NVIDIA technologies to the market.', 560000, 10),
-(7, 6, 'Apevia ATX-PM1000W ', 'power.jpg', 'The Apevia Premier 80+ Gold Efficiency Semi-Modular RGB Gaming PSU line of power supplies is available in 650W / 850W / 1000W wattage options and brings a stylish design while providing form and function to your system to suit your needs. It supports the newer ATX 12v2.3 standard and single rail setup. Boasting a cool 135mm RGB fan, it adds a nice glow to any computer.', 21000, 10),
-(8, 7, 'AXM 2718 27\" WQHD 2560 x 1440 60Hz', 'monitor.jpg', 'AXM 2718 27\" WQHD 2560 x 1440 60Hz IPS Gaming Monitor, Adaptive-Sync (FreeSync Compatible), Height Adjustable Stand, Display Port*1/ HDMI Port*2, with Speaker', 51000, 9),
-(9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000, 10),
-(10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000, 9),
-(11, 10, 'iPhone 14 Pro', 'iphone.jpg', 'The iPhone 14 Pro and Pro Max feature a Super Retina XDR OLED display with a typical maximum brightness of 1,000 nits. However, it can go all the way up to 1,600 nits while watching HDR videos, and 2,000 nits outdoors. The display has a refresh rate of 120 Hz and utilizes LTPO technology.', 375000, 20),
+(5, 4, 'Corsair Vengeance LPX 64GB', 'ram2.jpg', 'Corsair Vengeance LPX 32GB (2X16GB) DDR4 3200 (PC4-25600) C16 1.35V Desktop Memory - Black, 2 count (pack of 1)', 27000, 20),
+(6, 5, 'ASUS ROG Strix GeForce RTX® 4090', 'vga.jpg', 'The next generation is finally here. The ROG Strix GeForce RTX™ 4090 has been reimagined and improved to house the all new Ada Lovelace architecture from NVIDIA, which delivers up to 2x the performance of the previous generation and brings new and improved NVIDIA technologies to the market.', 560000, 8),
+(7, 6, 'Apevia ATX-PM1000W ', 'power.jpg', 'The Apevia Premier 80+ Gold Efficiency Semi-Modular RGB Gaming PSU line of power supplies is available in 650W / 850W / 1000W wattage options and brings a stylish design while providing form and function to your system to suit your needs. It supports the newer ATX 12v2.3 standard and single rail setup. Boasting a cool 135mm RGB fan, it adds a nice glow to any computer.', 21000, 9),
+(8, 7, 'AXM 2718 27\" WQHD 2560 x 1440 60Hz', 'monitor.jpg', 'AXM 2718 27\" WQHD 2560 x 1440 60Hz IPS Gaming Monitor, Adaptive-Sync (FreeSync Compatible), Height Adjustable Stand, Display Port*1/ HDMI Port*2, with Speaker', 51000, 8),
+(9, 8, 'Redragon S101', 'key.jpg', 'Redragon S101 Wired Gaming Keyboard and Mouse Combo RGB Backlit Gaming Keyboard with Multimedia Keys Wrist Rest and Red Backlit Gaming Mouse 3200 DPI for Windows PC Gamers (Black)', 12000, 9),
+(10, 9, 'SAMSUNG Type-C™ 128GB', 'flash.jpg', 'SAMSUNG Type-C™ USB Flash Drive, 128GB, Transfers 4GB Files in 11 Secs w/Up to 400MB/s 3.13 Read Speeds, Compatible w/USB 3.0/2.0, Waterproof, 2022 ', 3000, 8),
+(11, 10, 'iPhone 14 Pro', 'iphone.jpg', 'The iPhone 14 Pro and Pro Max feature a Super Retina XDR OLED display with a typical maximum brightness of 1,000 nits. However, it can go all the way up to 1,600 nits while watching HDR videos, and 2,000 nits outdoors. The display has a refresh rate of 120 Hz and utilizes LTPO technology.', 375000, 19),
 (12, 13, 'Raycon Everyday Wireless ', '1688194785_61SFfv24dLL._AC_SL1500_.jpg', 'Bluetooth Over Ear Headphones, with Active Noise Cancelling, Awareness Mode and Built in Microphone, IPX 4 Water Resistance, 38 Hours of Battery Life', 27000, 20);
 
 -- --------------------------------------------------------
@@ -238,7 +248,15 @@ INSERT INTO `sold` (`id`, `order_id`, `user_id`, `product_id`, `amount`) VALUES
 (12, 11, 2, 10, 1),
 (13, 11, 2, 9, 1),
 (14, 11, 2, 8, 1),
-(15, 12, 2, 9, 9);
+(15, 12, 2, 9, 9),
+(19, 14, 2, 8, 1),
+(20, 14, 2, 11, 1),
+(21, 14, 2, 7, 1),
+(22, 14, 2, 6, 1),
+(23, 15, 2, 10, 1),
+(24, 15, 2, 6, 1),
+(25, 15, 2, 5, 10),
+(26, 16, 2, 9, 1);
 
 --
 -- Indexes for dumped tables
@@ -300,7 +318,7 @@ ALTER TABLE `sold`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -330,7 +348,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -342,7 +360,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sold`
 --
 ALTER TABLE `sold`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

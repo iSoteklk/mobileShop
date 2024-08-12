@@ -60,8 +60,7 @@ $result = mysqli_query($conn, $sql);
                                             <td><img src="assets/images/categories/<?php echo $row['image']; ?>" alt="Category Image" width="20%" class="img-thumbnail"></td>
                                             <td><?php echo $row['name']; ?></td>
                                             <td>
-                                                <a href="category_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Add Item</a>
-                                                <a href="category_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edit Category</a>
+                                                <a href="category_update.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edit Category</a>
                                             </td>
                                         </tr>
                                 <?php
